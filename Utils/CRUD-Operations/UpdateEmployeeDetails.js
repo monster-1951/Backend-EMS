@@ -2,7 +2,8 @@ import { connectDB } from "../../Database/ConnectDB.js";
 import Employee from "../../Database/models/Employee.model.js";
 export const UpdateEmployeeById = async (req, res) => {
   const id = req.params.id;
-  const { name, email, password, role, attendance, salary } = req.body;
+  const { name, email, password, role, attendance, salary, position } =
+    req.body;
   console.log(id);
   if (req.role == "Admin" || "admin") {
     try {
@@ -14,7 +15,7 @@ export const UpdateEmployeeById = async (req, res) => {
       if (EmployeeExists) {
         const UpdatedEmployee = await Employee.findOneAndUpdate(
           { id: id }, // Find by the _id field, assuming it's a MongoDB ObjectId
-          { name, email, password, role, attendance, salary },
+          { name, email, password, role, attendance, salary, position },
           { new: true } // Return the updated document
         ).catch((err) => console.log(err));
         return res.status(200).json({

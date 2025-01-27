@@ -4,9 +4,9 @@ import Employee from "../../Database/models/Employee.model.js";
 export const CreateEmployee = async(req, res) => {
   if (req.role == "Admin") {
     console.log(req.role)
-    const {id, name, email, password, role, attendance, salary } = req.body;
+    const {id, name, email, password, role, attendance, salary,position } = req.body;
     const hashedPassword = await hash(password,12)
-    const NewEmployee = { id,name, email, password:hashedPassword, role, attendance, salary }
+    const NewEmployee = { id,name, email, password:hashedPassword, role, attendance, salary,position }
     const alreadyEmployee = await Employee.findOne({ email });
 
     if (alreadyEmployee) {
