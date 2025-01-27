@@ -9,7 +9,7 @@ import { CRUDRouter } from "./Routes/CRUDRoutes.js";
 const app = express();
 app.use(
   cors({
-    origin: ["http://localhost:5173"],
+    origin: ["http://localhost:5173","https://ems9.netlify.app"],
     methods: ["GET", "POST", "PUT"],
     credentials: true,
   })
